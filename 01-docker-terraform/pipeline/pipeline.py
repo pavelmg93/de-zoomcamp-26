@@ -1,7 +1,7 @@
 import sys
 import pandas as pd
 
-print('arguments: ', sys.argv)
+print('Arguments: ', sys.argv)
 month = sys.argv[1]
 print(f'Hello, pipeline! The month is {month}.')
 

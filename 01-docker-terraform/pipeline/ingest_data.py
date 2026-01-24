@@ -55,9 +55,12 @@ def main(pg_user, pg_pass, pg_host, pg_port, pg_db, year, month, chunksize, targ
         parse_dates=parse_dates
     )
     table_size = len(df)
+    print(f"Total rows to ingest: {table_size}")
 
     # Create the table with the correct schema
     df.head(0).to_sql(name=target_table, con=engine, if_exists='replace')
+    print(f"Table {target_table} created in the database.")
+    print(df.head(0))
 
     # Create iterable object that will read data in chunks
     df_iter = pd.read_csv(

@@ -1,4 +1,12 @@
-### Q1:
+## PAVEL GARANIN
+
+# DATA ENGINEERING ZOOMCAMP by DataTalksClub
+### | Module 01: Docker + SQL + Terraform + GCP |
+
+---
+### HOMEWORK
+
+#### Q1:
 ***A1: 25.3***
 
 
@@ -7,13 +15,13 @@
   pip 25.3 from /usr/local/lib/python3.13/site-packages/pip (python 3.13)
   root@f4ec0255d345:/# 
 
-### Q2:
+#### Q2:
 ***A2: postgres:5432  OR  db:5432***
 
 
   pgAdmin can connect via container name (postgres) or service name (db).
 
-### Q3:
+#### Q3:
 ***A3: 8007***
 
 
@@ -22,7 +30,7 @@
   WHERE trip_distance <= 1
   8009
 
-### Q4:
+#### Q4:
 ***A4: 2025-11-14***
 
 
@@ -32,7 +40,7 @@
   ORDER BY trip_distance DESC LIMIT 1
   2025-11-14 15:36:27
 
-### Q5:
+#### Q5:
 ***A5: East Harlem North***
 
 
@@ -45,7 +53,7 @@
   LIMIT 1;
   "East Harlem North"	9281.919999999991
 
-### Q6:
+#### Q6:
 ***A6: Yorkville West***
 
 
@@ -59,5 +67,5 @@ ORDER BY max_tip DESC
 LIMIT 1;
 "Yorkville West"	81.89
 
-### Q7:
+#### Q7:
 ***A7: terraform init, terraform apply -auto-approve, terraform destroy***

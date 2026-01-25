@@ -2,60 +2,66 @@
 
 **[↑ Up](README.md)** | **[← Previous](07-pgadmin.md)** | **[Next →](09-docker-compose.md)**
 
-Now let's containerize the ingestion script so we can run it in Docker.
-
-## The Dockerfile
-
-The `pipeline/Dockerfile` shows how to containerize the ingestion script:
+Let's modify the Dockerfile we created before to include our `ingest_data.py` script:
 
 ```dockerfile
+# Start with slim Python 3.13 image for smaller size
 FROM python:3.13.11-slim
+
+# Copy uv binary from official uv image
 COPY --from=ghcr.io/astral-sh/uv:latest /uv /bin/
 
-WORKDIR /code
-ENV PATH="/code/.venv/bin:$PATH"
+# Set working directory inside container
+WORKDIR /app
 
-COPY pyproject.toml .python-version uv.lock ./
+# Add virtual environment to PATH
+ENV PATH="/app/.venv/bin:$PATH"
+
+# Copy dependency files first (better caching)
+COPY "pyproject.toml" "uv.lock" ".python-version" ./
+# Install all dependencies (pandas, sqlalchemy, psycopg2)
 RUN uv sync --locked
 
-COPY ingest_data.py .
+# Copy ingestion script
+COPY ingest_data.py ingest_data.py 
 
-ENTRYPOINT ["uv", "run", "python", "ingest_data.py"]
+# Set entry point to run the ingestion script
+ENTRYPOINT [ "python", "ingest_data.py" ]
 ```
 
-### Explanation
+**Explanation:**
 
-- `FROM python:3.13.11-slim`: Start with slim Python 3.13 image for smaller size
-- `COPY --from=ghcr.io/astral-sh/uv:latest /uv /bin/`: Copy uv binary from official uv image
-- `WORKDIR /code`: Set working directory inside container
-- `ENV PATH="/code/.venv/bin:$PATH"`: Add virtual environment to PATH
-- `COPY pyproject.toml .python-version uv.lock ./`: Copy dependency files first (better caching)
-- `RUN uv sync --locked`: Install all dependencies from lock file (ensures reproducible builds)
-- `COPY ingest_data.py .`: Copy ingestion script
-- `ENTRYPOINT ["uv", "run", "python", "ingest_data.py"]`: Set entry point to run the ingestion script
+- `uv sync --locked` installs exact versions from `uv.lock` for reproducibility
+- Dependencies (pandas, sqlalchemy, psycopg2) are already in `pyproject.toml`
+- Multi-stage build pattern copies uv from official image
+- Copying dependency files before code improves Docker layer caching
 
-## Build the Docker Image
+**Build the Docker Image**
 
 ```bash
-cd pipeline
 docker build -t taxi_ingest:v001 .
 ```
 
-## Run the Containerized Ingestion
+**Run the Containerized Ingestion**
+
+You can drop the table in pgAdmin beforehand if you want, but the script will automatically replace the pre-existing table.
 
 ```bash
 docker run -it \
   --network=pg-network \
   taxi_ingest:v001 \
     --pg-user=root \
-    --pg-password=root \
+    --pg-pass=root \
     --pg-host=pgdatabase \
     --pg-port=5432 \
     --pg-db=ny_taxi \
-    --target-table=yellow_taxi_trips
+    --target-table=yellow_taxi_trips_2021_2 \
+    --year=2021 \
+    --month=2 \
+    --chunksize=100000
 ```
 
-### Important Notes
+**Important notes:**
 
 * We need to provide the network for Docker to find the Postgres container. It goes before the name of the image.
 * Since Postgres is running on a separate container, the host argument will have to point to the container name of Postgres (`pgdatabase`).

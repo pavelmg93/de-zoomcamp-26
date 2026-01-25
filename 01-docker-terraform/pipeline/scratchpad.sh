@@ -22,21 +22,21 @@ docker run -it --rm \
   dpage/pgadmin4
 
 # Dockerizing data ingestion script
-docker build -t taxi_ingest:v001 .
+docker build -t taxi-ingest:v004 .
 
 docker run -it --rm \
-  --network=pg-network \
+  --network=pipeline_default \
   --name pipeline \
-  taxi_ingest:v001 \
+  taxi-ingest:v004 \
   --pg-user=root \
   --pg-pass=root \
   --pg-host=pgdatabase \
   --pg-port=5432 \
   --pg-db=ny_taxi \
-  --target-table=yellow_taxi_trips_2021_2 \
-  --year=2021 \
-  --month=2 \
-  --chunksize=100000
+  --target-table=green_taxi_trips_2025_11 \
+  --year=2025 \
+  --month=11 \
+  --chunksize=10000
 
 # Zones
 https://github.com/DataTalksClub/nyc-tlc-data/releases/download/misc/taxi_zone_lookup.csv

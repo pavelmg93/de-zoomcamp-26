@@ -9,8 +9,8 @@ services:
       - ny_taxi_postgres_data:/var/lib/postgresql
     ports:
       - "5432:5432"
-    networks:
-      - pg-network
+    # networks:
+    #   - pg-network
 
   pgadmin:
     image: dpage/pgadmin4
@@ -21,38 +21,38 @@ services:
       - pgadmin_data:/var/lib/pgadmin
     ports:
       - "8085:80"
-    networks:
-      - pg-network
+    # networks:
+    #   - pg-network
     depends_on:
       - pgdatabase
 
-  pipeline:
-    build: .
-    environment:
-      PG_USER: "root"
-      PG_PASS: "root"
-      PG_HOST: "pgdatabase"
-      PG_PORT: "5432"
-      PG_DB: "ny_taxi"
-    command:
-      - --pg-user=root
-      - --pg-pass=root
-      - --pg-host=pgdatabase
-      - --pg-port=5432
-      - --pg-db=ny_taxi
-      - --target-table=yellow_taxi_trips_2021_4
-      - --year=2021
-      - --month=4
-      - --chunksize=100000
-    networks:
-      - pg-network
-    depends_on:
-      - pgdatabase
+  # pipeline:
+  #   build: .
+  #   environment:
+  #     PG_USER: "root"
+  #     PG_PASS: "root"
+  #     PG_HOST: "pgdatabase"
+  #     PG_PORT: "5432"
+  #     PG_DB: "ny_taxi"
+  #   command:
+  #     - --pg-user=root
+  #     - --pg-pass=root
+  #     - --pg-host=pgdatabase
+  #     - --pg-port=5432
+  #     - --pg-db=ny_taxi
+  #     - --target-table=yellow_taxi_trips_2021_4
+  #     - --year=2021
+  #     - --month=4
+  #     - --chunksize=100000
+  #   networks:
+  #     - pg-network
+  #   depends_on:
+  #     - pgdatabase
 
 volumes:
   ny_taxi_postgres_data:
   pgadmin_data:
 
-networks:
-  pg-network:
-    driver: bridge
+# networks:
+#   pg-network:
+#     driver: bridge

@@ -1,3 +1,11 @@
+# GCP & Auth
+gcp/
+credentials.json
+*.json
+
+# Docker Data
+ny_taxi_postgres_data/
+
 *.parquet
 
 # Byte-compiled / optimized / DLL files

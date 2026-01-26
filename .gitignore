@@ -1,3 +1,17 @@
+# Terraform
+*.tfstate
+*.tfstate.backup
+.terraform/
+crash.log
+*.tfvars
+*.tfvars.json
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+.terraformrc
+terraform.rc
+
 # GCP & Auth
 gcp/
 credentials.json

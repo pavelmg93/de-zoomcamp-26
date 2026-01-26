@@ -2,7 +2,7 @@ terraform {
   required_providers {
     google = {
       source  = "hashicorp/google"
-      version = "4.51.0"
+      version = "~> 7.0"
     }
   }
 }
@@ -10,15 +10,15 @@ terraform {
 provider "google" {
 # Credentials only needs to be set if you do not have the GOOGLE_APPLICATION_CREDENTIALS set
 #  credentials = 
-  project = "<Your Project ID>"
+  project = "project-c94cb82b-89ba-4659-98a"
   region  = "us-central1"
 }
 
 
 
 resource "google_storage_bucket" "data-lake-bucket" {
-  name          = "<Your Unique Bucket Name>"
-  location      = "US"
+  name          = "de-zc-pmg-data"
+  location      = "us-central1"
 
   # Optional, but recommended settings:
   storage_class = "STANDARD"
@@ -33,7 +33,7 @@ resource "google_storage_bucket" "data-lake-bucket" {
       type = "Delete"
     }
     condition {
-      age = 30  // days
+      age = 70  // days
     }
   }
 
@@ -42,7 +42,7 @@ resource "google_storage_bucket" "data-lake-bucket" {
 
 
 resource "google_bigquery_dataset" "dataset" {
-  dataset_id = "<The Dataset Name You Want to Use>"
-  project    = "<Your Project ID>"
+  dataset_id = "de_zc_pmg_bigquery_dataset"
+  project    = "project-c94cb82b-89ba-4659-98a"
   location   = "US"
 }

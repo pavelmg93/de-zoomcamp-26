@@ -10,7 +10,7 @@
 ***A1: 128.3MB***
 
 
-screenshot
+![02-homework-pavelgaranin-dezc-q1](images/02-homework-pavelgaranin-dezc-q1.png)
 
 #### Q2:
 ***A2: green_tripdata_2020-04.csv***
@@ -25,7 +25,8 @@ becomes "green_tripdata_2020-04.csv"
 ***A3: 24,648,499***
 
 
-screenshots
+![02-homework-pavelgaranin-dezc-q3a](images/02-homework-pavelgaranin-dezc-q3a.png)
+<img src="images/02-homework-pavelgaranin-dezc-q1.png" width="50%">
 
 #### Q4:
 ***A4: 1,734,051***

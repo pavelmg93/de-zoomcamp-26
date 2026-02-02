@@ -35,7 +35,7 @@ becomes "green_tripdata_2020-04.csv"
 ![02-homework-pavelgaranin-dezc-q4b](images/02-homework-pavelgaranin-dezc-q4b.png)
 
 #### Q5:
-***A5: 1,428,092***
+***A5: 1,925,152***
 
 
 ![02-homework-pavelgaranin-dezc-q5](images/02-homework-pavelgaranin-dezc-q5.png)screenshots

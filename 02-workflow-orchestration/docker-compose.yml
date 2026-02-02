@@ -52,7 +52,9 @@ services:
       - kestra_data:/app/storage
       - /var/run/docker.sock:/var/run/docker.sock
       - /tmp/kestra-wd:/tmp/kestra-wd
+      - /home/codespace/.config/gcloud:/root/.config/gcloud:ro
     environment:
+      ENV_GEMINI_API_KEY: ${ENV_GEMINI_API_KEY}
       KESTRA_CONFIGURATION: |
         datasources:
           postgres:
@@ -73,10 +75,16 @@ services:
               basePath: "/app/storage"
           queue:
             type: postgres
+          ai:
+            type: gemini
+            gemini:
+              model-name: gemini-2.5-flash
+              api-key: "${ENV_GEMINI_API_KEY}" # Docker will inject the value here
           tasks:
             tmpDir:
               path: /tmp/kestra-wd/tmp
           url: http://localhost:8080/
+      GOOGLE_APPLICATION_CREDENTIALS: /root/.config/gcloud/application_default_credentials.json
     ports:
       - "8080:8080"
       - "8081:8081"

@@ -26,19 +26,19 @@ becomes "green_tripdata_2020-04.csv"
 
 
 ![02-homework-pavelgaranin-dezc-q3a](images/02-homework-pavelgaranin-dezc-q3a.png)
-<img src="images/02-homework-pavelgaranin-dezc-q1.png" width="50%">
-
+![02-homework-pavelgaranin-dezc-q3b](images/02-homework-pavelgaranin-dezc-q3b.png)
 #### Q4:
 ***A4: 1,734,051***
 
 
-screenshots
+![02-homework-pavelgaranin-dezc-q4a](images/02-homework-pavelgaranin-dezc-q4a.png)
+![02-homework-pavelgaranin-dezc-q4b](images/02-homework-pavelgaranin-dezc-q4b.png)
 
 #### Q5:
 ***A5: 1,428,092***
 
 
-screenshots
+![02-homework-pavelgaranin-dezc-q5](images/02-homework-pavelgaranin-dezc-q5.png)screenshots
 
 #### Q6:
 ***A6: Add a timezone property set to America/New_York in the Schedule trigger configuration***

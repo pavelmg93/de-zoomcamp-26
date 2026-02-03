@@ -12,7 +12,7 @@ import click
 @click.option('--year', default=2021, type=int)
 @click.option('--month', default=1, type=int)
 @click.option('--chunksize', default=100000, type=int)
-@click.option('--target-table', default='yellow_taxi_data')
+@click.option('--target-table', default='green_taxi_data')
 
 def main(pg_user, pg_pass, pg_host, pg_port, pg_db, year, month, chunksize, target_table):
 

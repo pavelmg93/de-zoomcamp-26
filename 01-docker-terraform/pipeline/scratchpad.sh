@@ -99,3 +99,13 @@ sudo mv terraform /usr/local/bin/
 
 # Verify it works
 terraform -version
+
+# Authenticating GCP via ADC
+gcloud auth application-default login
+
+# Assigning quota project in GCP
+gcloud auth application-default set-quota-project project-c94cb82b-89ba-4659-98a
+
+# Credentials saved to file: [/home/codespace/.config/gcloud/application_default_credentials.json]
+# These credentials will be used by any library that requests Application Default Credentials (ADC).
+# Quota project "project-c94cb82b-89ba-4659-98a" was added to ADC which can be used by Google client libraries for billing and quota. Note that some services may still bill the project owning the resource.

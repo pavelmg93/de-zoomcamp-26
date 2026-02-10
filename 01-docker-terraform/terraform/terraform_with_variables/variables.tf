@@ -28,7 +28,7 @@ variable "location" {
 variable "bq_dataset_name" {
   description = "My BigQuery Dataset Name"
   #Update the below to what you want your dataset to be called
-  default     = "de_zc_pmg_bigquery_dataset"
+  default     = "taxi_rides_dataset"
 }
 
 variable "gcs_bucket_name" {

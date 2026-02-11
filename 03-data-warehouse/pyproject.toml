@@ -5,8 +5,10 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
+    "dlt[bigquery,duckdb,gs]>=1.21.0",
     "pandas>=3.0.0",
     "pyarrow>=23.0.0",
+    "requests>=2.32.5",
 ]
 
 [dependency-groups]

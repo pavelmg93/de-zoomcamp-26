@@ -53,6 +53,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
       - /tmp/kestra-wd:/tmp/kestra-wd
       - /home/codespace/.config/gcloud:/root/.config/gcloud:ro
+      - ./flows:/app/flows:ro
     environment:
       ENV_GEMINI_API_KEY: ${ENV_GEMINI_API_KEY}
       KESTRA_CONFIGURATION: |
@@ -69,6 +70,8 @@ services:
               password: Admin1234
           repository:
             type: postgres
+            path: /app/flows
+            auto-reload: true
           storage:
             type: local
             local:
@@ -83,6 +86,11 @@ services:
           tasks:
             tmpDir:
               path: /tmp/kestra-wd/tmp
+            scripts:
+              enabled: true
+          server:
+            worker:
+              enabled: true
           url: http://localhost:8080/
       GOOGLE_APPLICATION_CREDENTIALS: /root/.config/gcloud/application_default_credentials.json
     ports:

@@ -40,5 +40,5 @@ select * from renamed
 
 -- Sample records for dev environment using deterministic date filter
 {% if target.name == 'default' %}
-where pickup_datetime >= '2019-01-01' and pickup_datetime < '2019-02-01'
+where pickup_datetime >= '{{ var("dev_start_date") }}' and pickup_datetime < '{{ var("dev_end_date") }}'
 {% endif %}

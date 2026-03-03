@@ -1,3 +1,13 @@
+# DBs
+*.db
+
+# bruin
+.bruin.yml
+
+# Archives, data files
+*.zip
+*.gz
+
 # Terraform
 *.tfstate
 *.tfstate.backup
@@ -229,3 +239,7 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+logs/runs
+logs/*.log
+*.py[cod]
+logs/queries

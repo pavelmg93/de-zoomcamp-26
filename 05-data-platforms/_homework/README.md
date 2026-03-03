@@ -34,9 +34,3 @@ Deduplication removes some records.
 
 
 ![](images/h5-1.png)
-
-
-
-#### Q6:
-***A6: 43,244,693***
-![](images/h4-6.png)

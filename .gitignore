@@ -1,3 +1,8 @@
+# Parquet
+*.parquet
+*.parquet.crc
+*.crc
+
 # DBs
 *.db
 

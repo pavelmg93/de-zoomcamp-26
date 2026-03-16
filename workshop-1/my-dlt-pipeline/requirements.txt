@@ -1,0 +1,8 @@
+dlt[duckdb]>=1.22.2
+dlt[workshop]
+numpy
+marimo
+ibis-framework[duckdb]
+pandas==3.0.1
+plotly==6.6.0
+pyarrow-hotfix==0.7
